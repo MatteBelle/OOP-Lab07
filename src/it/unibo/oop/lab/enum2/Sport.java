@@ -16,28 +16,15 @@ package it.unibo.oop.lab.enum2;
  * 
  */
 public enum Sport {
-
-    /*
-     * TODO
-     * 
-     * Declare the following sports:
-     * 
-     * - basket
-     * 
-     * - volley
-     * 
-     * - tennis
-     * 
-     * - bike
-     * 
-     * - F1
-     * 
-     * - motogp
-     * 
-     * - soccer
-     * 
-     */
-
+	
+	BASKET(5,"Basketball", Place.INDOOR),
+	VOLLEY(6, "Volleyball", Place.OUTDOOR),
+	TENNIS(1, "Tennis", Place.OUTDOOR),
+	BIKE(1, "Biking", Place.OUTDOOR),
+	F1(1, "Formula 1", Place.OUTDOOR),
+	MOTOGP(1, "MOTOGP", Place.OUTDOOR),
+	SOCCER(5, "Soccer", Place.INDOOR);
+	
     /*
      * TODO
      * 
@@ -45,7 +32,9 @@ public enum Sport {
      * 
      * Declare required fields
      */
-
+	private final int nPlayers;
+	private final String name;
+	private final Place place;
     /*
      * TODO
      * 
@@ -55,7 +44,11 @@ public enum Sport {
      * 
      * - Sport(final Place place, final int noTeamMembers, final String actualName)
      */
-
+	Sport(final int nPlayers, final String name, final Place place){
+		this.name = name;
+		this.nPlayers = nPlayers;
+		this.place = place;
+	}
     /*
      * TODO
      * 
@@ -81,4 +74,18 @@ public enum Sport {
      * 
      * Returns the string representation of a sport
      */
+	public boolean isIndividualSport() {
+		return this.nPlayers == 1;
+	}
+	
+	public boolean isIndoorSport() {
+		return this.place == Place.INDOOR;
+	}
+	public Place getPlace() {
+		return this.place;
+	}
+	public String toString() {
+		return "|Name: " + this.name + "| Players per team: " 
+		+ this.nPlayers + "| Practiced :" + this.place +"|";
+	}
 }
